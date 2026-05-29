@@ -1,0 +1,211 @@
+/* =========================================
+   🌿 KRISHIMITRA - Premium SaaS Dashboard
+   Modern Dark/Light Mode Ready
+   ========================================= */
+
+:root {
+    --primary: #10b981;
+    --primary-dark: #059669;
+    --accent: #34d399;
+
+    /* Dark Mode (Default) */
+    --bg: #0f172a;
+    --bg-secondary: #111827;
+    --card: rgba(15, 23, 42, 0.85);
+    --glass: rgba(255, 255, 255, 0.08);
+    --text: #e2e8f0;
+    --text-muted: #94a3b8;
+    --border: rgba(255, 255, 255, 0.08);
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+}
+
+.light {
+    --bg: #f8fafc;
+    --bg-secondary: #f1f5f9;
+    --card: rgba(255, 255, 255, 0.95);
+    --glass: rgba(255, 255, 255, 0.85);
+    --text: #0f172a;
+    --text-muted: #64748b;
+    --border: rgba(0, 0, 0, 0.08);
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* ============== BASE STYLES ============== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', system-ui, sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+/* ============== GLASSMORPHISM ============== */
+.glass {
+    background: var(--card);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+}
+
+.glass:hover {
+    border-color: rgba(16, 185, 129, 0.35);
+    transform: translateY(-4px);
+}
+
+/* ============== SIDEBAR ============== */
+.fixed.left-0 {
+    background: rgba(15, 23, 42, 0.98);
+    backdrop-filter: blur(20px);
+    border-right: 1px solid var(--border);
+    box-shadow: 4px 0 25px rgba(0, 0, 0, 0.3);
+}
+
+.light .fixed.left-0 {
+    background: rgba(30, 41, 59, 0.95);
+}
+
+/* ============== TOP NAVBAR ============== */
+header {
+    background: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.light header {
+    background: rgba(255, 255, 255, 0.85);
+}
+
+/* ============== TABLES ============== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 16px 14px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+}
+
+th {
+    background: rgba(16, 185, 129, 0.12);
+    color: var(--text);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+}
+
+tr:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.light tr:hover {
+    background: rgba(0, 0, 0, 0.03);
+}
+
+/* ============== INPUTS & SELECTS ============== */
+input,
+select {
+    width: 100%;
+    padding: 14px 18px;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--text);
+    transition: all 0.25s ease;
+}
+
+input:focus,
+select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.2);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.light input,
+.light select {
+    background: rgba(255, 255, 255, 0.9);
+}
+
+/* ============== BUTTONS ============== */
+button {
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(16, 185, 129, 0.35);
+}
+
+/* ============== TAB BUTTONS ============== */
+.tab-btn {
+    transition: all 0.3s ease;
+}
+
+.tab-btn.active {
+    color: white;
+    border-bottom: 3px solid var(--primary);
+}
+
+/* ============== AUTH PAGES ============== */
+.auth-container {
+    background: var(--card);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--border);
+    border-radius: 28px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+}
+
+/* ============== ANIMATIONS ============== */
+@keyframes floatLeaf {
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-6px) rotate(12deg);
+    }
+
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+}
+
+/* Legacy Topbar */
+.topbar {
+    background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+    position: relative;
+}
+
+.topbar::before {
+    content: "🌿";
+    position: absolute;
+    left: 25px;
+    top: 14px;
+    font-size: 1.8rem;
+    animation: floatLeaf 3s ease-in-out infinite;
+}
+
+/* ============== RESPONSIVE ============== */
+@media (max-width: 768px) {
+    .ml-72 {
+        margin-left: 0 !important;
+    }
+
+    .glass {
+        border-radius: 18px;
+    }
+}

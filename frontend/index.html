@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KrishiMitra • Login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="bg-gradient-to-br from-emerald-950 to-slate-950 min-h-screen flex items-center justify-center">
+    <div class="glass max-w-md w-full mx-4 p-10">
+        <div class="text-center mb-10">
+            <span class="text-6xl">🌾</span>
+            <h1 class="text-4xl font-bold mt-4">KrishiMitra</h1>
+            <p class="text-emerald-400 mt-2">Smart Agriculture Platform</p>
+        </div>
+
+        <div class="space-y-6">
+            <input type="text" id="username" placeholder="Username"
+                class="w-full bg-slate-800/50 border border-white/20 rounded-2xl px-6 py-4 focus:outline-none focus:border-emerald-500">
+            <input type="password" id="password" placeholder="Password"
+                class="w-full bg-slate-800/50 border border-white/20 rounded-2xl px-6 py-4 focus:outline-none focus:border-emerald-500">
+            <button onclick="login()"
+                class="w-full bg-emerald-500 hover:bg-emerald-600 py-4 rounded-2xl font-semibold text-lg transition-all">Login</button>
+        </div>
+
+        <p class="text-center mt-8 text-slate-400">
+            Don't have an account? <a href="register.html" class="text-emerald-400 hover:underline">Register</a>
+        </p>
+        <p id="msg" class="text-center mt-4 text-red-400"></p>
+    </div>
+
+    <script src="js/auth.js"></script>
+</body>
+
+</html>

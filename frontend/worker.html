@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KrishiMitra • Worker Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        tailwind.config = { content: ["./**/*.{html,js}"] };
+    </script>
+</head>
+
+<body class="bg-[#0f172a] text-slate-200 min-h-screen">
+
+    <!-- Sidebar -->
+    <div class="fixed left-0 top-0 h-screen w-72 bg-slate-900 border-r border-slate-700 p-6 flex flex-col">
+        <div class="flex items-center gap-3 mb-12">
+            <span class="text-4xl">🌾</span>
+            <h1 class="text-3xl font-bold tracking-tight">KrishiMitra</h1>
+        </div>
+
+        <nav class="flex-1 space-y-1">
+            <a href="#"
+                class="flex items-center gap-3 px-4 py-3 bg-emerald-500/10 text-emerald-400 rounded-2xl font-medium">
+                <i class="fa-solid fa-tasks"></i> My Tasks
+            </a>
+            <a href="#" class="flex items-center gap-3 px-4 py-3 hover:bg-white/5 rounded-2xl transition-colors">
+                <i class="fa-solid fa-seedling"></i> Available Farms
+            </a>
+            <a href="#" class="flex items-center gap-3 px-4 py-3 hover:bg-white/5 rounded-2xl transition-colors">
+                <i class="fa-solid fa-chart-line"></i> Performance
+            </a>
+        </nav>
+
+        <div class="pt-6 border-t border-slate-700">
+            <div class="flex items-center gap-3">
+                <img src="https://i.pravatar.cc/48" class="w-11 h-11 rounded-2xl">
+                <div>
+                    <p class="font-medium" id="workerName">Worker Name</p>
+                    <p class="text-xs text-emerald-400" id="workerContact">Contact: —</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="ml-72">
+        <!-- Top Navbar -->
+        <header
+            class="h-16 border-b border-slate-700 bg-slate-900/80 backdrop-blur-lg px-8 flex items-center justify-between">
+            <h2 class="text-2xl font-semibold" id="welcomeText">Good morning, Worker 👋</h2>
+
+            <button onclick="logout()"
+                class="bg-red-500 hover:bg-red-600 px-6 py-2 rounded-2xl text-sm font-medium transition-all">
+                Logout
+            </button>
+        </header>
+
+        <main class="p-8">
+            <!-- KPI Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+                <div class="glass rounded-3xl p-6">
+                    <p class="text-slate-400 text-sm">Pending Tasks</p>
+                    <p class="text-5xl font-semibold mt-2 text-amber-400" id="pendingCount">4</p>
+                </div>
+                <div class="glass rounded-3xl p-6">
+                    <p class="text-slate-400 text-sm">Completed Today</p>
+                    <p class="text-5xl font-semibold mt-2 text-emerald-400">7</p>
+                </div>
+                <div class="glass rounded-3xl p-6">
+                    <p class="text-slate-400 text-sm">This Month</p>
+                    <p class="text-5xl font-semibold mt-2">28</p>
+                </div>
+            </div>
+
+            <!-- Tasks Section -->
+            <div class="glass rounded-3xl p-8">
+                <h3 class="text-2xl font-semibold mb-6">My Assigned Tasks</h3>
+                <table id="tasksTable" class="w-full"></table>
+            </div>
+
+            <!-- Performance Chart -->
+            <div class="glass rounded-3xl p-6 mt-8">
+                <h3 class="font-semibold mb-4">Task Completion Trend</h3>
+                <canvas id="performanceChart" height="140"></canvas>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/charts.js"></script>
+    <script src="js/worker.js"></script>
+    <script>
+        window.onload = () => {
+            if (typeof loadWorkerProfile === 'function') loadWorkerProfile();
+            if (typeof loadTasks === 'function') loadTasks();
+            initCharts(); // Performance chart
+        };
+    </script>
+</body>
+
+</html>

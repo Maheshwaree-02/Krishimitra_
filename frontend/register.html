@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KrishiMitra • Register</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+
+    <script>
+        tailwind.config = { content: ["./**/*.{html,js}"] };
+    </script>
+</head>
+
+<body class="bg-gradient-to-br from-emerald-950 to-slate-950 min-h-screen flex items-center justify-center">
+    <div class="glass max-w-lg w-full mx-4 p-10 rounded-3xl">
+        <div class="text-center mb-10">
+            <span class="text-6xl">🌾</span>
+            <h1 class="text-4xl font-bold mt-4 text-white">KrishiMitra</h1>
+            <p class="text-emerald-400 mt-2">Join the Smart Farming Revolution</p>
+        </div>
+
+        <div class="space-y-6">
+            <input type="text" id="username" placeholder="Username"
+                class="w-full bg-slate-800/50 border border-white/20 rounded-2xl px-6 py-4 text-white placeholder:text-slate-400 focus:outline-none focus:border-emerald-500">
+
+            <input type="password" id="password" placeholder="Password (min 8 chars)"
+                class="w-full bg-slate-800/50 border border-white/20 rounded-2xl px-6 py-4 text-white placeholder:text-slate-400 focus:outline-none focus:border-emerald-500">
+
+            <select id="role" onchange="toggleWorkerFields()"
+                class="w-full bg-slate-800/50 border border-white/20 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-emerald-500">
+                <option value="">Select Role</option>
+                <option value="farmer">Farmer</option>
+                <option value="worker">Worker</option>
+                <option value="admin">Admin</option>
+            </select>
+
+            <!-- Worker-specific fields -->
+            <div id="workerFields" class="hidden space-y-6">
+                <input type="text" id="skill" placeholder="Skill (e.g. Harvester, Irrigation Specialist)"
+                    class="w-full bg-slate-800/50 border border-white/20 rounded-2xl px-6 py-4 text-white placeholder:text-slate-400 focus:outline-none focus:border-emerald-500">
+                <input type="number" id="salary" placeholder="Expected Daily Salary (₹)" min="0"
+                    class="w-full bg-slate-800/50 border border-white/20 rounded-2xl px-6 py-4 text-white placeholder:text-slate-400 focus:outline-none focus:border-emerald-500">
+            </div>
+
+            <input type="text" id="contact_number" placeholder="Contact Number (10 digits)"
+                class="w-full bg-slate-800/50 border border-white/20 rounded-2xl px-6 py-4 text-white placeholder:text-slate-400 focus:outline-none focus:border-emerald-500">
+
+            <button onclick="register()"
+                class="w-full bg-emerald-500 hover:bg-emerald-600 py-4 rounded-2xl font-semibold text-lg transition-all active:scale-95">
+                Create Account
+            </button>
+        </div>
+
+        <p class="text-center mt-8 text-slate-400">
+            Already have an account? <a href="index.html" class="text-emerald-400 hover:underline">Login</a>
+        </p>
+        <p id="msg" class="text-center mt-4 text-red-400 font-medium"></p>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script>
+        function toggleWorkerFields() {
+            const role = document.getElementById("role").value;
+            document.getElementById("workerFields").classList.toggle("hidden", role !== "worker");
+        }
+    </script>
+</body>
+
+</html>
